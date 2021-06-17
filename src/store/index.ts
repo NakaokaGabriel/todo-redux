@@ -18,16 +18,18 @@ const tron = Reactotron
   .use(compose(reactotronRedux(), sagaPlugin({ except: [''] })))
   .connect();
 
-tron.clear!();
-
-console.tron = tron;
-
 const sagaMiddleware = createSagaMiddleware();
 const createEnhancer = tron.createEnhancer!();
 
 const middlewares = [sagaMiddleware];
 
-const store = createStore(rootReducer, compose(applyMiddleware(...middlewares), createEnhancer));
+const enhancer = 
+  process.env.NODE_ENV === 'development'
+  ? compose(applyMiddleware(...middlewares), createEnhancer)
+  : applyMiddleware(...middlewares)
+
+const store = createStore(rootReducer, enhancer);
+
 
 sagaMiddleware.run(rootSaga);
 
