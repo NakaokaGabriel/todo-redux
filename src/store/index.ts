@@ -6,11 +6,16 @@ import sagaPlugin from 'reactotron-redux-saga';
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
+import { TodoList } from './modules/todo/types';
 
 declare global {
   interface Console {
     tron: any;
   }
+}
+
+export interface IState {
+  todo: TodoList
 }
 
 const tron = Reactotron
