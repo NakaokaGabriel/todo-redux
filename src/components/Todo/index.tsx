@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   FaEllipsisH,
   FaRocketchat,
@@ -9,8 +10,24 @@ import {
 } from 'react-icons/fa';
 
 import * as Style from './styles';
+import { addTodoRequest } from '../../store/modules/todo/Todo.actions';
+import { TodoItem } from '../../store/modules/todo/Todo.types';
 
 const Todo = () => {
+  const dispatch = useDispatch();
+
+  function handleAddTodoList(todo: TodoItem) {
+    dispatch(addTodoRequest(todo));
+  }
+
+  const todoList = {
+    id: 1,
+    name: 'Alguma coisa',
+    comments: 3,
+    current_tasks: 3,
+    total_tasks: 6
+  }
+
   return (
     <Style.Container>
       <Style.Header>
@@ -44,7 +61,7 @@ const Todo = () => {
         <Style.ItemChecked htmlFor="item-1">
           <input type="checkbox" name="item-1" id="item-1" />
         </Style.ItemChecked>
-        
+
         <Style.ItemContent>
           <p>Alert Page</p>
           <Style.ContentAction>
@@ -59,6 +76,8 @@ const Todo = () => {
           </Style.ContentAction>
         </Style.ItemContent>
       </Style.TodoList>
+
+      <button type="button" onClick={() => handleAddTodoList(todoList)}><h1>teste</h1></button>
     </Style.Container>
   );
 }

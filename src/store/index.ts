@@ -6,7 +6,7 @@ import sagaPlugin from 'reactotron-redux-saga';
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
-import { TodoList } from './modules/todo/types';
+import { TodoList } from './modules/todo/Todo.types';
 
 declare global {
   interface Console {
@@ -30,11 +30,10 @@ const middlewares = [sagaMiddleware];
 
 const enhancer = 
   process.env.NODE_ENV === 'development'
-  ? compose(applyMiddleware(...middlewares), createEnhancer)
+  ? compose(applyMiddleware(...middlewares))
   : applyMiddleware(...middlewares)
 
 const store = createStore(rootReducer, enhancer);
-
 
 sagaMiddleware.run(rootSaga);
 
