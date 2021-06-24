@@ -33,6 +33,7 @@ const enhancer =
   ? compose(applyMiddleware(...middlewares))
   : applyMiddleware(...middlewares)
 
+
 const store = createStore(rootReducer, enhancer);
 
 sagaMiddleware.run(rootSaga);

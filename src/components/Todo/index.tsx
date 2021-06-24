@@ -5,11 +5,12 @@ import {
   FaRocketchat,
   FaShareSquare,
   FaSortAmountDownAlt,
-  FaAngleDown,
-  FaCodeBranch
 } from 'react-icons/fa';
 
-import * as Style from './styles';
+import * as Style from './styles'; 
+
+import TodoList from '../TodoList';
+
 import { addTodoRequest } from '../../store/modules/todo/Todo.actions';
 import { TodoItem } from '../../store/modules/todo/Todo.types';
 
@@ -53,29 +54,7 @@ const Todo = () => {
         </Style.HeaderActions>
       </Style.Header>
 
-      <Style.TodoList>
-        <button type="button">
-          <FaAngleDown />
-        </button>
-
-        <Style.ItemChecked htmlFor="item-1">
-          <input type="checkbox" name="item-1" id="item-1" />
-        </Style.ItemChecked>
-
-        <Style.ItemContent>
-          <p>Alert Page</p>
-          <Style.ContentAction>
-            <button type="button">
-              <FaCodeBranch />
-              0/2
-            </button>
-            <button type="button">
-              <FaRocketchat />
-              4
-            </button>
-          </Style.ContentAction>
-        </Style.ItemContent>
-      </Style.TodoList>
+      <TodoList />
 
       <button type="button" onClick={() => handleAddTodoList(todoList)}><h1>teste</h1></button>
     </Style.Container>

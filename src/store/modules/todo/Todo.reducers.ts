@@ -12,7 +12,9 @@ const todo: Reducer<TodoList> = (state = INITIAL_STATE, action) => {
       case TodoActions.addTodoRequest: {
         const todoList = action.payload;
 
-        console.log(todoList);
+        draft.todoList.push({
+          ...todoList
+        });
 
         break;
       }
